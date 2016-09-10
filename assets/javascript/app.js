@@ -27,7 +27,6 @@ function artistGetInfo() {
         api_key: apiKey,
         format: "json"
     };
-    var results
 
     $.ajax({url: queryString, method: 'GET', data: searchData})
     .done(function(response) {
@@ -46,7 +45,6 @@ function artistGetTopTracks() {
         api_key: apiKey,
         format: "json"
     };
-    var results
 
     $.ajax({url: queryString, method: 'GET', data: searchData})
     .done(function(response) {
@@ -65,7 +63,6 @@ function artistGetTopAlbums() {
         api_key: apiKey,
         format: "json"
     };
-    var results
 
     $.ajax({url: queryString, method: 'GET', data: searchData})
     .done(function(response) {
@@ -84,12 +81,10 @@ function artistGetSimilar() {
         api_key: apiKey,
         format: "json"
     };
-    var results
 
     $.ajax({url: queryString, method: 'GET', data: searchData})
     .done(function(response) {
         similar = response
-        // console.log(similar)
         displaySimilar(similar)
     })
 }
