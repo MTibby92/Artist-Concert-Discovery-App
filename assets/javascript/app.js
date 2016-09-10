@@ -77,6 +77,13 @@ function artistGetTopAlbums() {
 }
 
 $( document ).ready(function() {
+    $('#searchInput').keypress(function (e) {
+        var key = e.which;
+        if(key == 13) {
+            $('#search').trigger('click');
+        }
+    });   
+
     $('#search').on('click', function(event) {
     	artistGetInfo()
     	artistGetTopTracks()
