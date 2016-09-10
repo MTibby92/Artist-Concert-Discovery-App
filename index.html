@@ -21,19 +21,19 @@
     </nav>
     <div class="container-search">
         <div class="row">
-            <form class="col s12">
+            <!-- <form class="col s12"> -->
                 <div class="row">
                     <!--put in icon, perm identity -->
                     <!--typography, quasiparticles -->
                     <div class="input-field col s9">
-                        <input placeholder="Artist" id="first_name" type="text" class="validate">
+                        <input placeholder="Artist" type="text" class="validate" id="searchInput">
                         <label for="first_name"></label>
                     </div>
                     <div class="input-field col s3">
-                        <a class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons">+</i></a>
+                        <a class="btn-floating btn-large waves-effect waves-light grey"><i class="material-icons" id="search">+</i></a>
                     </div>
                 </div>
-            </form>
+            <!-- </form> -->
         </div>
     </div>
     <div class="jumbotron">
@@ -99,6 +99,7 @@
     <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
     <!-- Firebase Reference -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+    <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>
