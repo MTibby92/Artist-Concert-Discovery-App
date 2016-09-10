@@ -13,9 +13,13 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 
 var queryString = 'http://ws.audioscrobbler.com/2.0'
 
+var info = undefined
+var albums = undefined
+var tracks = undefined
+
+
 function artistGetInfo() {
     var searchInput = $('#searchInput').val().trim()
-    // $('#searchInput').val('')
     var searchData = {
         method: "artist.getinfo",
         artist: searchInput,
@@ -27,18 +31,13 @@ function artistGetInfo() {
 
     $.ajax({url: queryString, method: 'GET', data: searchData})
     .done(function(response) {
-        console.log('Get Info response: ')
-        console.log(response)
-        console.log('The artist name is:  ' + response.artist.name) // Artist name
-        console.log('Here is the image link: ' + response.artist.image[4]["#text"]) // Artist mega image (biggest size) index 3 is smaller
-
-        results = response.artist
+        info = response
+        displayArtistInfo(info)
     })
 }
 
 function artistGetTopTracks() {
     var searchInput = $('#searchInput').val().trim()
-    // $('#searchInput').val('')
     var searchData = {
         method: "artist.getTopTracks",
         artist: searchInput,
@@ -51,14 +50,13 @@ function artistGetTopTracks() {
 
     $.ajax({url: queryString, method: 'GET', data: searchData})
     .done(function(response) {
-        console.log('Top Tracks response: ')
-        console.log(response)
+        tracks = response
+        displayTopTracks(tracks)
     })
 }
 
 function artistGetTopAlbums() {
     var searchInput = $('#searchInput').val().trim()
-    // $('#searchInput').val('')
     var searchData = {
         method: "artist.getTopAlbums",
         artist: searchInput,
@@ -71,10 +69,104 @@ function artistGetTopAlbums() {
 
     $.ajax({url: queryString, method: 'GET', data: searchData})
     .done(function(response) {
-        console.log('Top Albums response: ')
-        console.log(response)
+        albums = response
+        displayTopAlbums(albums)
     })
 }
+
+function artistGetSimilar() {
+    var searchInput = $('#searchInput').val().trim()
+    var searchData = {
+        method: "artist.getSimilar",
+        artist: searchInput,
+        autocorrect: 1,
+        limit: 3,
+        api_key: apiKey,
+        format: "json"
+    };
+    var results
+
+    $.ajax({url: queryString, method: 'GET', data: searchData})
+    .done(function(response) {
+        similar = response
+        // console.log(similar)
+        displaySimilar(similar)
+    })
+}
+
+function displayArtistInfo(data) {
+    var artist = {
+        name: data.artist.name,
+        description: data.artist.bio.summary,
+        image: data.artist.image[4]["#text"], //mega image size
+    }
+    console.log(artist)
+}
+
+function displayTopAlbums(data) {
+    var album1 = {
+        title: data.topalbums.album["0"].name, 
+        cover: data.topalbums.album["0"].image[3]["#text"]
+    }
+    var album2 = {
+        title: data.topalbums.album["1"].name, 
+        cover: data.topalbums.album["1"].image[3]["#text"]
+    }
+    var album3 = {
+        title: data.topalbums.album["2"].name, 
+        cover: data.topalbums.album["2"].image[3]["#text"]
+    }
+    console.log(album1)
+    console.log(album2)
+    console.log(album3)
+}
+
+function displayTopTracks(data) {
+    var track1 = {
+        title: data.toptracks.track["0"].name,
+        link: data.toptracks.track["0"].url
+    }
+    var track2 = {
+        title: data.toptracks.track["1"].name,
+        link: data.toptracks.track["1"].url
+    }
+    var track3 = {
+        title: data.toptracks.track["2"].name,
+        link: data.toptracks.track["2"].url
+    }
+    var track4 = {
+        title: data.toptracks.track["3"].name,
+        link: data.toptracks.track["3"].url
+    }
+    var track5 = {
+        title: data.toptracks.track["4"].name,
+        link: data.toptracks.track["4"].url
+    }
+    console.log(track1)
+    console.log(track2)
+    console.log(track3)
+    console.log(track4)
+    console.log(track5)
+}
+
+function displaySimilar(data) {
+    var similar1 = {
+        name: data.similarartists.artist["0"].name,
+        image: data.similarartists.artist["0"].image[4]["#text"],
+    }
+    var similar2 = {
+        name: data.similarartists.artist["1"].name,
+        image: data.similarartists.artist["1"].image[4]["#text"],
+    }
+    var similar3 = {
+        name: data.similarartists.artist["2"].name,
+        image: data.similarartists.artist["2"].image[4]["#text"],
+    }
+    console.log(similar1)
+    console.log(similar2)
+    console.log(similar3)
+}
+
 
 $( document ).ready(function() {
     $('#searchInput').keypress(function (e) {
@@ -88,6 +180,7 @@ $( document ).ready(function() {
     	artistGetInfo()
     	artistGetTopTracks()
     	artistGetTopAlbums()
+        artistGetSimilar()
     	$('#searchInput').val('')
     })
 })
