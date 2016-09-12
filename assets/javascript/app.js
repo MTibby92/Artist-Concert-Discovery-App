@@ -120,9 +120,9 @@ function displayTopAlbums(data) {
         title: data.topalbums.album["2"].name, 
         cover: data.topalbums.album["2"].image[2]["#text"]
     }
-    console.log(album1)
-    console.log(album2)
-    console.log(album3)
+    // console.log(album1)
+    // console.log(album2)
+    // console.log(album3)
     var html = $('<div class="col s4">' +
         '<div>' +
         '<p>' + album1.title + '<p>' +
@@ -161,11 +161,11 @@ function displayTopTracks(data) {
         title: data.toptracks.track["4"].name,
         link: data.toptracks.track["4"].url
     }
-    console.log(track1)
-    console.log(track2)
-    console.log(track3)
-    console.log(track4)
-    console.log(track5)
+    // console.log(track1)
+    // console.log(track2)
+    // console.log(track3)
+    // console.log(track4)
+    // console.log(track5)
     var html = $('<div class="col s4" id="artistSongs">' + 
         '<div class="collection">' + 
             '<a href="' + track1.link + '" class="collection-item">' +
@@ -196,9 +196,30 @@ function displaySimilar(data) {
         name: data.similarartists.artist["2"].name,
         image: data.similarartists.artist["2"].image[4]["#text"],
     }
-    console.log(similar1)
-    console.log(similar2)
-    console.log(similar3)
+    // console.log(similar1)
+    // console.log(similar2)
+    // console.log(similar3)
+    var html1 = $('<div class = "row">' +
+        '<div class="col s12">' +
+        '<p>' + similar1.name + '</p>' +
+        '<img class="image-responsive" src="' + similar1.image + '">' +
+        '</div>' +
+        '</div>')
+    var html2 = $('<div class = "row">' +
+        '<div class="col s12">' +
+        '<p>' + similar2.name + '</p>' +
+        '<img class="image-responsive" src="' + similar2.image + '">' +
+        '</div>' +
+        '</div>')
+    var html3 = $('<div class = "row">' +
+        '<div class="col s12">' +
+        '<p>' + similar3.name + '</p>' +
+        '<img class="image-responsive" src="' + similar3.image + '">' +
+        '</div>' +
+        '</div>')
+    $('#similarArtist1').append(html1)
+    $('#similarArtist2').append(html2)
+    $('#similarArtist3').append(html3)
 }
 
 
