@@ -169,15 +169,15 @@ function displayTopTracks(data) {
     var html = $('<div class="col s4" id="artistSongs">' + 
         '<div class="collection">' + 
             '<a href="' + track1.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i>' + track1.title + '</a>' +
+                '<i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></a>' +
             '<a href="' + track2.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i>' + track2.title + '</a>' +
+                '<i class="material-icons">play_circle_filled</i><span>' + track2.title + '</span></a>' +
             '<a href="' + track3.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i>' + track3.title + '</a>' +
+                '<i class="material-icons">play_circle_filled</i><span>' + track3.title + '</span></a>' +
             '<a href="' + track4.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i>' + track4.title + '</a>' +
+                '<i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></a>' +
             '<a href="' + track5.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i>' + track5.title + '</a>' +
+                '<i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></a>' +
         '</div>' +
         '</div>')
     $('#mainArtistRow').append(html)
