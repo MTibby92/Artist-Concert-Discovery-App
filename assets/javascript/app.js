@@ -19,10 +19,10 @@ var tracks = undefined
 
 
 function artistGetInfo() {
-    var searchInput = $('#searchInput').val().trim()
+    var input = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getinfo",
-        artist: searchInput,
+        artist: input,
         autocorrect: 1,
         api_key: apiKey,
         format: "json"
@@ -32,14 +32,15 @@ function artistGetInfo() {
     .done(function(response) {
         info = response
         displayArtistInfo(info)
+        artistGetTopTracks(input)
     })
 }
 
-function artistGetTopTracks() {
-    var searchInput = $('#searchInput').val().trim()
+function artistGetTopTracks(input) {
+    // var searchInput = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getTopTracks",
-        artist: searchInput,
+        artist: input,
         autocorrect: 1,
         limit: 5,
         api_key: apiKey,
@@ -50,14 +51,15 @@ function artistGetTopTracks() {
     .done(function(response) {
         tracks = response
         displayTopTracks(tracks)
+        artistGetTopAlbums(input)
     })
 }
 
-function artistGetTopAlbums() {
-    var searchInput = $('#searchInput').val().trim()
+function artistGetTopAlbums(input) {
+    // var searchInput = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getTopAlbums",
-        artist: searchInput,
+        artist: input,
         autocorrect: 1,
         limit: 3,
         api_key: apiKey,
@@ -68,14 +70,15 @@ function artistGetTopAlbums() {
     .done(function(response) {
         albums = response
         displayTopAlbums(albums)
+        artistGetSimilar(input)
     })
 }
 
-function artistGetSimilar() {
-    var searchInput = $('#searchInput').val().trim()
+function artistGetSimilar(input) {
+    // var searchInput = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getSimilar",
-        artist: searchInput,
+        artist: input,
         autocorrect: 1,
         limit: 3,
         api_key: apiKey,
@@ -93,9 +96,14 @@ function displayArtistInfo(data) {
     var artist = {
         name: data.artist.name,
         description: data.artist.bio.summary,
-        image: data.artist.image[4]["#text"], //mega image size
+        image: data.artist.image[3]["#text"], //mega image size
     }
     console.log(artist)
+    // var html = $('<div class="col s4">' +
+    //     '<h2>' + artist.name + '</h2>' + 
+    //     '<img src="' + artist.image + '">' +
+    //     '</div>')
+    // $('#mainArtist').append(html)
 }
 
 function displayTopAlbums(data) {
@@ -114,6 +122,23 @@ function displayTopAlbums(data) {
     console.log(album1)
     console.log(album2)
     console.log(album3)
+    // var html = $('<div class="row">' +
+    //     '<div class="col s5">' +
+    //     '<div>' +
+    //     '<h3>' + album1.title + '</h3>' +
+    //     '<img src="' + album1.image + '">' +
+    //     '</div>' +
+    //     '<div>' +
+    //     '<h3>' + album2.title + '</h3>' +
+    //     '<img src="' + album2.image + '">' +
+    //     '</div>' +
+    //     '<div>' +
+    //     '<h3>' + album3.title + '</h3>' +
+    //     '<img src="' + album3.image + '">' +
+    //     '</div>' +
+    //     '<div>' +
+    //     '</div>')
+    // $('#mainArtist').append(html)
 }
 
 function displayTopTracks(data) {
@@ -173,9 +198,6 @@ $( document ).ready(function() {
 
     $('#search').on('click', function(event) {
     	artistGetInfo()
-    	artistGetTopTracks()
-    	artistGetTopAlbums()
-        artistGetSimilar()
     	$('#searchInput').val('')
     })
 })
