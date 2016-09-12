@@ -7,6 +7,10 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 // Song Kick API key
 // applied 9/8, can take up to 7 days to get a key
 
+// Got a Seat Geek Account (use instead of Song Kick) see: http://platform.seatgeek.com/
+// Client ID:  NTY3ODAyM3wxNDczNzE5MjM2
+// Secret: DG24aEL_jP5x1lXmJeRPbDVb03Ocuy4IFWjrC-xY
+
 
 // WORKING EXAMPLE LASTFM API CALL
 // http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Linkin+Park&api_key=26a76686375358b55dd7488f7bf1256d&format=json
