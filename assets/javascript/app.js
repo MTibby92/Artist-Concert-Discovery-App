@@ -99,12 +99,24 @@ function artistGetSimilar(input) {
 }
 
 function getConcert(input) {
+    var arr = input.split(' ')
+    var modifiedInput = ''
+
+        for (var i in arr) {
+            var string = arr[i] + '-'
+            modifiedInput = modifiedInput.concat(string)
+        }
+
+    var newInput = modifiedInput.slice(0,-1)
+    newInput = newInput.toLowerCase()
+
     var query = 'https://api.seatgeek.com/2/events'
     var data = {
-        "performers.slug": input, //NEED TO USE - instead of + for spaces; still having trouble running back to back calls
+        "performers.slug": newInput, //NEED TO USE - instead of + for spaces; still having trouble running back to back calls
         client_id: 'NTY3ODAyM3wxNDczNzE5MjM2'
     }
 
+    // NEED TO ACCOUNT FOR NO CONCERTS, RETURNS ONLY META DATA; ALSO NEED TO ACCOUNT FOR LESS THAN 5 CONCERTS BEING RETURNED
     $.ajax({url: query, method: 'GET', data: data})
     .done(function(response) {
         var concerts = response
