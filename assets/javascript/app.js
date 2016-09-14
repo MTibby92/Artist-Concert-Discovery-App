@@ -37,28 +37,28 @@ function artistGetInfo() {
     .done(function(response) {
         info = response
         displayArtistInfo(info)
-        artistGetTopAlbums(input)
-    })
-}
-
-function artistGetTopAlbums(input) {
-    // var searchInput = $('#searchInput').val().trim()
-    var searchData = {
-        method: "artist.getTopAlbums",
-        artist: input,
-        autocorrect: 1,
-        limit: 3,
-        api_key: apiKey,
-        format: "json"
-    };
-
-    $.ajax({url: queryString, method: 'GET', data: searchData})
-    .done(function(response) {
-        albums = response
-        displayTopAlbums(albums)
         artistGetTopTracks(input)
     })
 }
+
+// function artistGetTopAlbums(input) {
+//     // var searchInput = $('#searchInput').val().trim()
+//     var searchData = {
+//         method: "artist.getTopAlbums",
+//         artist: input,
+//         autocorrect: 1,
+//         limit: 3,
+//         api_key: apiKey,
+//         format: "json"
+//     };
+
+//     $.ajax({url: queryString, method: 'GET', data: searchData})
+//     .done(function(response) {
+//         albums = response
+//         displayTopAlbums(albums)
+//         artistGetTopTracks(input)
+//     })
+// }
 
 function artistGetTopTracks(input) {
     // var searchInput = $('#searchInput').val().trim()
@@ -119,7 +119,7 @@ function displayArtistInfo(data) {
         image: data.artist.image[3]["#text"], // image size
     }
     // console.log(artist)
-    var html = $('<div class="col s4">' +
+    var html = $('<div class="col s12">' +
         '<p>' + artist.name + '<p>' + 
         '<img class="image-responsive" src="' + artist.image + '">' +
         '<p>' + artist.description + '</p>' +
@@ -127,38 +127,38 @@ function displayArtistInfo(data) {
     $('#mainArtistRow').append(html)
 }
 
-function displayTopAlbums(data) {
-    var album1 = {
-        title: data.topalbums.album["0"].name, 
-        cover: data.topalbums.album["0"].image[2]["#text"]
-    }
-    var album2 = {
-        title: data.topalbums.album["1"].name, 
-        cover: data.topalbums.album["1"].image[2]["#text"]
-    }
-    var album3 = {
-        title: data.topalbums.album["2"].name, 
-        cover: data.topalbums.album["2"].image[2]["#text"]
-    }
-    // console.log(album1)
-    // console.log(album2)
-    // console.log(album3)
-    var html = $('<div class="col s4">' +
-        '<div>' +
-        '<p>' + album1.title + '<p>' +
-        '<img class="image-responsive" src="' + album1.cover + '">' +
-        '</div>' +
-        '<div>' +
-        '<p>' + album2.title + '</p>' +
-        '<img class="image-responsive" src="' + album2.cover + '">' +
-        '</div>' +
-        '<div>' +
-        '<p>' + album3.title + '</p>' +
-        '<img class="image-responsive" src="' + album3.cover + '">' +
-        '</div>' +
-        '<div>')
-    $('#mainArtistRow').append(html)
-}
+// function displayTopAlbums(data) {
+//     var album1 = {
+//         title: data.topalbums.album["0"].name, 
+//         cover: data.topalbums.album["0"].image[2]["#text"]
+//     }
+//     var album2 = {
+//         title: data.topalbums.album["1"].name, 
+//         cover: data.topalbums.album["1"].image[2]["#text"]
+//     }
+//     var album3 = {
+//         title: data.topalbums.album["2"].name, 
+//         cover: data.topalbums.album["2"].image[2]["#text"]
+//     }
+//     // console.log(album1)
+//     // console.log(album2)
+//     // console.log(album3)
+//     var html = $('<div class="col s4">' +
+//         '<div>' +
+//         '<p>' + album1.title + '<p>' +
+//         '<img class="image-responsive" src="' + album1.cover + '">' +
+//         '</div>' +
+//         '<div>' +
+//         '<p>' + album2.title + '</p>' +
+//         '<img class="image-responsive" src="' + album2.cover + '">' +
+//         '</div>' +
+//         '<div>' +
+//         '<p>' + album3.title + '</p>' +
+//         '<img class="image-responsive" src="' + album3.cover + '">' +
+//         '</div>' +
+//         '<div>')
+//     $('#mainArtistRow').append(html)
+// }
 
 function displayTopTracks(data) {
     var track1 = {
@@ -186,8 +186,7 @@ function displayTopTracks(data) {
     // console.log(track3)
     // console.log(track4)
     // console.log(track5)
-    var html = $('<div class="col s4" id="artistSongs">' + 
-        '<div class="collection">' + 
+    var html = $('<div class="collection">' + 
             '<a href="' + track1.link + '" class="collection-item">' +
                 '<i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></a>' +
             '<a href="' + track2.link + '" class="collection-item">' +
@@ -198,9 +197,8 @@ function displayTopTracks(data) {
                 '<i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></a>' +
             '<a href="' + track5.link + '" class="collection-item">' +
                 '<i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></a>' +
-        '</div>' +
         '</div>')
-    $('#mainArtistRow').append(html)
+    $('#artistSongs').append(html)
 }
 
 function displaySimilar(data) {
