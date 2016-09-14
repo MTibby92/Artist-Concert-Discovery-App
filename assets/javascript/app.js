@@ -101,7 +101,8 @@ function artistGetSimilar(input) {
 function getConcert(input) {
     var query = 'https://api.seatgeek.com/2/events'
     var data = {
-        "performers.slug": input 
+        "performers.slug": input, //NEED TO USE - instead of + for spaces; still having trouble running back to back calls
+        client_id: 'NTY3ODAyM3wxNDczNzE5MjM2'
     }
 
     $.ajax({url: query, method: 'GET', data: data})
