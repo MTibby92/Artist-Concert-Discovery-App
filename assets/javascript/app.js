@@ -23,8 +23,8 @@ var albums = undefined
 var tracks = undefined
 
 
-function artistGetInfo() {
-    var input = $('#searchInput').val().trim()
+function artistGetInfo(input) {
+    // var input = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getinfo",
         artist: input,
@@ -220,19 +220,19 @@ function displaySimilar(data) {
     var html1 = $('<div class = "row">' +
         '<div class="col s12">' +
         '<p>' + similar1.name + '</p>' +
-        '<img class="image-responsive" src="' + similar1.image + '">' +
+        '<img class="image-responsive" src="' + similar1.image + '" alt="' + similar1.name + '">' +
         '</div>' +
         '</div>')
     var html2 = $('<div class = "row">' +
         '<div class="col s12">' +
         '<p>' + similar2.name + '</p>' +
-        '<img class="image-responsive" src="' + similar2.image + '">' +
+        '<img class="image-responsive" src="' + similar2.image + '" alt="' + similar2.name + '">' +
         '</div>' +
         '</div>')
     var html3 = $('<div class = "row">' +
         '<div class="col s12">' +
         '<p>' + similar3.name + '</p>' +
-        '<img class="image-responsive" src="' + similar3.image + '">' +
+        '<img class="image-responsive" src="' + similar3.image + '" alt="' + similar3.name + '">' +
         '</div>' +
         '</div>')
     $('#similarArtist1').append(html1)
@@ -307,6 +307,22 @@ function displayConcertInfo(data) {
     }
 }
 
+function reset() {
+    $('#mainArtistRow').empty()
+
+    $('#artistSongs').empty()
+
+    $('#concert1').empty()
+    $('#concert2').empty()
+    $('#concert3').empty()
+    $('#concert4').empty()
+    $('#concert5').empty()
+
+    $('#similarArtist1').empty()
+    $('#similarArtist2').empty()
+    $('#similarArtist3').empty()
+}
+
 
 $( document ).ready(function() {
     $('#searchInput').keypress(function (e) {
@@ -317,7 +333,18 @@ $( document ).ready(function() {
     });   
 
     $('#search').on('click', function(event) {
-    	artistGetInfo()
+        reset()
+        var input = $('#searchInput').val().trim()
+    	artistGetInfo(input)
     	$('#searchInput').val('')
+    })
+
+    $('.similarArtist').on('click', function(event) {
+        reset()
+        // console.log($(event.target).find('img'))
+        // var input = $(event.target).find('img')
+        // console.log($(event.target).find('img').context.alt)
+        var input = $(event.target).find('img').context.alt
+        artistGetInfo(input)
     })
 })
