@@ -10,6 +10,7 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 // Got a Seat Geek Account (use instead of Song Kick) see: http://platform.seatgeek.com/
 // Client ID:  NTY3ODAyM3wxNDczNzE5MjM2
 // Secret: DG24aEL_jP5x1lXmJeRPbDVb03Ocuy4IFWjrC-xY
+// query string: https://api.seatgeek.com/2
 
 
 // WORKING EXAMPLE LASTFM API CALL
@@ -93,6 +94,21 @@ function artistGetSimilar(input) {
     .done(function(response) {
         similar = response
         displaySimilar(similar)
+        getConcert(input)
+    })
+}
+
+function getConcert(input) {
+    var query = 'https://api.seatgeek.com/2/events'
+    var data = {
+        "performers.slug": input 
+    }
+
+    $.ajax({url: query, method: 'GET', data: data})
+    .done(function(response) {
+        var concerts = response
+        console.log(concerts)
+        displayConcertInfo(concerts)
     })
 }
 
@@ -102,7 +118,7 @@ function displayArtistInfo(data) {
         description: data.artist.bio.summary,
         image: data.artist.image[3]["#text"], // image size
     }
-    console.log(artist)
+    // console.log(artist)
     var html = $('<div class="col s4">' +
         '<p>' + artist.name + '<p>' + 
         '<img class="image-responsive" src="' + artist.image + '">' +
@@ -224,6 +240,73 @@ function displaySimilar(data) {
     $('#similarArtist1').append(html1)
     $('#similarArtist2').append(html2)
     $('#similarArtist3').append(html3)
+}
+
+function displayConcertInfo(data) {
+    var concert1 = {
+        title: data.events["0"].title,
+        localDate: data.events["0"].datetime_local,
+        venue: data.events["0"].venue.name,
+        location: data.events["0"].venue.display_location,
+        avgPrice: data.events["0"].stats.average_price,
+        lowestPrice: data.events["0"].stats.lowest_price,
+        url: data.events["0"].url
+    }
+    var concert2 = {
+        title: data.events["1"].title,
+        localDate: data.events["1"].datetime_local,
+        venue: data.events["1"].venue.name,
+        location: data.events["1"].venue.display_location,
+        avgPrice: data.events["1"].stats.average_price,
+        lowestPrice: data.events["1"].stats.lowest_price,
+        url: data.events["1"].url
+    }
+    var concert3 = {
+        title: data.events["2"].title,
+        localDate: data.events["2"].datetime_local,
+        venue: data.events["2"].venue.name,
+        location: data.events["2"].venue.display_location,
+        avgPrice: data.events["2"].stats.average_price,
+        lowestPrice: data.events["2"].stats.lowest_price,
+        url: data.events["2"].url
+    }
+    var concert4 = {
+        title: data.events["3"].title,
+        localDate: data.events["3"].datetime_local,
+        venue: data.events["3"].venue.name,
+        location: data.events["3"].venue.display_location,
+        avgPrice: data.events["3"].stats.average_price,
+        lowestPrice: data.events["3"].stats.lowest_price,
+        url: data.events["3"].url
+    }
+    var concert5 = {
+        title: data.events["4"].title,
+        localDate: data.events["4"].datetime_local,
+        venue: data.events["4"].venue.name,
+        location: data.events["4"].venue.display_location,
+        avgPrice: data.events["4"].stats.average_price,
+        lowestPrice: data.events["4"].stats.lowest_price,
+        url: data.events["4"].url
+    }
+
+    var list = [concert1, concert2, concert3, concert4, concert5]
+    // console.log(list[0])
+    // console.log(list[0].title)
+
+    var counter = 1
+    for (var i in list) {
+        var html = $('<div>' +
+            '<p>Title: ' + list[i].title + '</p>' +
+            '<p>Date & Time: ' + list[i].localDate + '</p>' +
+            '<p>Venue: ' + list[i].venue + '</p>' +
+            '<p>Location: ' + list[i].location + '</p>' +
+            '<p>Average Ticket Price: ' + list[i].avgPrice + '</p>' +
+            '<p>Lowest Ticket Price: ' + list[i].lowestPrice + '</p>' +
+            '<a href="' + list[i].url + '">Seat Geek: Buy Now</a>' +
+            '</div>')
+        $('#concert' + counter).append(html)
+        counter++
+    }
 }
 
 
