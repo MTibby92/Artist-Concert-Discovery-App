@@ -3,9 +3,6 @@
 	margin-top: 10px;
 }
 
-#headerText {
-	font-weight: 300;
-}
 
 .material-icons {
 	color: black;
@@ -24,7 +21,30 @@ input {
 	color: black;
 }
 
+<<<<<<< HEAD
+#headerText, h4 {
+    font-family: advent-pro, sans-serif;
+    font-size: 60px;
+    font-weight: 600;
+}
+
+h4 {
+	font-family: advent-pro, sans-serif;
+    font-size: 40px;
+    font-weight: 300;
+    text-align: center;
+}
+
+.footerImg {
+	height: 100%;
+	width: 100%;
+}
+
+.sizeBox {
+	width: 20%;
+=======
 img {
 	width: 100%;
 	height: auto;
+>>>>>>> 84618695f8d61b69a86e3fad09a7a7bec56f3805
 }
