@@ -123,6 +123,18 @@ function getConcert(input) {
         console.log(concerts)
         displayConcertInfo(concerts)
     })
+    .fail(function(response, text, error) {
+        var html = $('<div>' +
+            '<p>Error Text: ' + text + '</p>' +
+            '<p>Error Message: ' + error + '</p>' +
+            '</div>')
+        $('#concert1').append(html)
+        $('#concert2').append(html)
+        $('#concert3').append(html)
+        $('#concert4').append(html)
+        $('#concert5').append(html)
+        console.log(error)
+    })
 }
 
 function displayArtistInfo(data) {
@@ -254,69 +266,118 @@ function displaySimilar(data) {
 }
 
 function displayConcertInfo(data) {
-    var concert1 = {
-        title: data.events["0"].title,
-        localDate: data.events["0"].datetime_local,
-        venue: data.events["0"].venue.name,
-        location: data.events["0"].venue.display_location,
-        avgPrice: data.events["0"].stats.average_price,
-        lowestPrice: data.events["0"].stats.lowest_price,
-        url: data.events["0"].url
-    }
-    var concert2 = {
-        title: data.events["1"].title,
-        localDate: data.events["1"].datetime_local,
-        venue: data.events["1"].venue.name,
-        location: data.events["1"].venue.display_location,
-        avgPrice: data.events["1"].stats.average_price,
-        lowestPrice: data.events["1"].stats.lowest_price,
-        url: data.events["1"].url
-    }
-    var concert3 = {
-        title: data.events["2"].title,
-        localDate: data.events["2"].datetime_local,
-        venue: data.events["2"].venue.name,
-        location: data.events["2"].venue.display_location,
-        avgPrice: data.events["2"].stats.average_price,
-        lowestPrice: data.events["2"].stats.lowest_price,
-        url: data.events["2"].url
-    }
-    var concert4 = {
-        title: data.events["3"].title,
-        localDate: data.events["3"].datetime_local,
-        venue: data.events["3"].venue.name,
-        location: data.events["3"].venue.display_location,
-        avgPrice: data.events["3"].stats.average_price,
-        lowestPrice: data.events["3"].stats.lowest_price,
-        url: data.events["3"].url
-    }
-    var concert5 = {
-        title: data.events["4"].title,
-        localDate: data.events["4"].datetime_local,
-        venue: data.events["4"].venue.name,
-        location: data.events["4"].venue.display_location,
-        avgPrice: data.events["4"].stats.average_price,
-        lowestPrice: data.events["4"].stats.lowest_price,
-        url: data.events["4"].url
-    }
+    if (data.events.length == 0) {
+        $('#concert1').append($('<div>' +
+            '<p>This band is not currently touring, according to our API.</p>' +
+            '</div>'))
+        $('#concert2').append($('<div>' +
+            '<p>This band is not currently touring, according to our API.</p>' +
+            '</div>'))
+        $('#concert3').append($('<div>' +
+            '<p>This band is not currently touring, according to our API.</p>' +
+            '</div>'))
+        $('#concert4').append($('<div>' +
+            '<p>This band is not currently touring, according to our API.</p>' +
+            '</div>'))
+        $('#concert5').append($('<div>' +
+            '<p>This band is not currently touring, according to our API.</p>' +
+            '</div>'))
+    }else if (data.events.length > 0 && data.events.length < 5){
+        var num = data.events.length
+        var counter = 1
+        for (var i=0; i < num; i++) {
+            var concert = {
+                title: data.events[i].title,
+                localDate: data.events[i].datetime_local,
+                venue: data.events[i].venue.name,
+                location: data.events[i].venue.display_location,
+                avgPrice: data.events[i].stats.average_price,
+                lowestPrice: data.events[i].stats.lowest_price,
+                url: data.events[i].url
+            }
+            var html = $('<div>' +
+                '<p>Title: ' + concert.title + '</p>' +
+                '<p>Date & Time: ' + concert.localDate + '</p>' +
+                '<p>Venue: ' + concert.venue + '</p>' +
+                '<p>Location: ' + concert.location + '</p>' +
+                '<p>Average Ticket Price: ' + concert.avgPrice + '</p>' +
+                '<p>Lowest Ticket Price: ' + concert.lowestPrice + '</p>' +
+                '<a href="' + concert.url + '">Seat Geek: Buy Now</a>' +
+                '</div>')
+            $('#concert' + counter).append(html)
+            counter++
+        }
+        while (counter < 6) {
+            $('#concert' + counter).append('<div>' +
+                '<p>There are no other scheduled concerts for this artist.</p>' +
+                '</div>')
+            counter++
+        }
+    } else {
+        var concert1 = {
+            title: data.events["0"].title,
+            localDate: data.events["0"].datetime_local,
+            venue: data.events["0"].venue.name,
+            location: data.events["0"].venue.display_location,
+            avgPrice: data.events["0"].stats.average_price,
+            lowestPrice: data.events["0"].stats.lowest_price,
+            url: data.events["0"].url
+        }
+        var concert2 = {
+            title: data.events["1"].title,
+            localDate: data.events["1"].datetime_local,
+            venue: data.events["1"].venue.name,
+            location: data.events["1"].venue.display_location,
+            avgPrice: data.events["1"].stats.average_price,
+            lowestPrice: data.events["1"].stats.lowest_price,
+            url: data.events["1"].url
+        }
+        var concert3 = {
+            title: data.events["2"].title,
+            localDate: data.events["2"].datetime_local,
+            venue: data.events["2"].venue.name,
+            location: data.events["2"].venue.display_location,
+            avgPrice: data.events["2"].stats.average_price,
+            lowestPrice: data.events["2"].stats.lowest_price,
+            url: data.events["2"].url
+        }
+        var concert4 = {
+            title: data.events["3"].title,
+            localDate: data.events["3"].datetime_local,
+            venue: data.events["3"].venue.name,
+            location: data.events["3"].venue.display_location,
+            avgPrice: data.events["3"].stats.average_price,
+            lowestPrice: data.events["3"].stats.lowest_price,
+            url: data.events["3"].url
+        }
+        var concert5 = {
+            title: data.events["4"].title,
+            localDate: data.events["4"].datetime_local,
+            venue: data.events["4"].venue.name,
+            location: data.events["4"].venue.display_location,
+            avgPrice: data.events["4"].stats.average_price,
+            lowestPrice: data.events["4"].stats.lowest_price,
+            url: data.events["4"].url
+        }
 
-    var list = [concert1, concert2, concert3, concert4, concert5]
-    // console.log(list[0])
-    // console.log(list[0].title)
+        var list = [concert1, concert2, concert3, concert4, concert5]
+        // console.log(list[0])
+        // console.log(list[0].title)
 
-    var counter = 1
-    for (var i in list) {
-        var html = $('<div>' +
-            '<p>Title: ' + list[i].title + '</p>' +
-            '<p>Date & Time: ' + list[i].localDate + '</p>' +
-            '<p>Venue: ' + list[i].venue + '</p>' +
-            '<p>Location: ' + list[i].location + '</p>' +
-            '<p>Average Ticket Price: ' + list[i].avgPrice + '</p>' +
-            '<p>Lowest Ticket Price: ' + list[i].lowestPrice + '</p>' +
-            '<a href="' + list[i].url + '">Seat Geek: Buy Now</a>' +
-            '</div>')
-        $('#concert' + counter).append(html)
-        counter++
+        var counter = 1
+        for (var i in list) {
+            var html = $('<div>' +
+                '<p>Title: ' + list[i].title + '</p>' +
+                '<p>Date & Time: ' + list[i].localDate + '</p>' +
+                '<p>Venue: ' + list[i].venue + '</p>' +
+                '<p>Location: ' + list[i].location + '</p>' +
+                '<p>Average Ticket Price: ' + list[i].avgPrice + '</p>' +
+                '<p>Lowest Ticket Price: ' + list[i].lowestPrice + '</p>' +
+                '<a href="' + list[i].url + '">Seat Geek: Buy Now</a>' +
+                '</div>')
+            $('#concert' + counter).append(html)
+            counter++
+        }
     }
 }
 
