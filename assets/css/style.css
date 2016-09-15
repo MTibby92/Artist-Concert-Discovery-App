@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #icon {
 	margin-top: 10px;
 }
@@ -20,6 +21,7 @@ input {
 	color: black;
 }
 
+<<<<<<< HEAD
 #headerText, h4 {
     font-family: advent-pro, sans-serif;
     font-size: 60px;
@@ -40,4 +42,9 @@ h4 {
 
 .sizeBox {
 	width: 20%;
+=======
+img {
+	width: 100%;
+	height: auto;
+>>>>>>> 84618695f8d61b69a86e3fad09a7a7bec56f3805
 }
