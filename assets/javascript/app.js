@@ -211,19 +211,51 @@ function displayTopTracks(data) {
     // console.log(track3)
     // console.log(track4)
     // console.log(track5)
-    var html = $('<div class="collection">' + 
-            '<a href="' + track1.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></a>' +
-            '<a href="' + track2.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i><span>' + track2.title + '</span></a>' +
-            '<a href="' + track3.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i><span>' + track3.title + '</span></a>' +
-            '<a href="' + track4.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></a>' +
-            '<a href="' + track5.link + '" class="collection-item">' +
-                '<i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></a>' +
-        '</div>')
+
+    // var html = $('<div class="collection">' + 
+    //         '<a href="' + track1.link + '" class="collection-item">' +
+    //             '<i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></a>' +
+    //         '<a href="' + track2.link + '" class="collection-item">' +
+    //             '<i class="material-icons">play_circle_filled</i><span>' + track2.title + '</span></a>' +
+    //         '<a href="' + track3.link + '" class="collection-item">' +
+    //             '<i class="material-icons">play_circle_filled</i><span>' + track3.title + '</span></a>' +
+    //         '<a href="' + track4.link + '" class="collection-item">' +
+    //             '<i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></a>' +
+    //         '<a href="' + track5.link + '" class="collection-item">' +
+    //             '<i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></a>' +
+    //     '</div>')
+    // $('#artistSongs').append(html)
+
+    var html = $('<ul class="collapsible" data-collapsible="accordion">' +
+        '<li>' +
+            '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></div>' +
+            '<div class="collapsible-body"><a href="' + track1.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+        '</li>' +
+        '<li>' +
+            '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track2.title + '</span></div>' +
+            '<div class="collapsible-body"><a href="' + track2.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+        '</li>' +
+        '<li>' +
+            '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track3.title + '</span></div>' +
+            '<div class="collapsible-body"><a href="' + track3.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+        '</li>' +
+        '<li>' +
+            '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></div>' +
+            '<div class="collapsible-body"><a href="' + track4.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+        '</li>' +
+        '<li>' +
+            '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></div>' +
+            '<div class="collapsible-body"><a href="' + track5.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+        '</li>' +
+        '</ul>')
     $('#artistSongs').append(html)
+
+    // necessary to make the added elements clickable
+    $(document).ready(function(){
+        $('.collapsible').collapsible({
+        accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        })
+    })
 }
 
 function displaySimilar(data) {
@@ -420,5 +452,9 @@ $( document ).ready(function() {
         // console.log($(event.target).find('img').context.alt)
         var input = $(event.target).find('img').context.alt
         artistGetInfo(input)
+    })
+
+    $('.collapsible').collapsible({
+      accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     })
 })
