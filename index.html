@@ -24,6 +24,7 @@
     <div class="container-search">
         <div id="searchDiv">
             <div class="row" id="inputDiv">
+                <!-- <form class="col s12"> -->
                 <i class="medium material-icons col s1" id="icon">play_for_work</i>
                 <div class="row">
                     <div class="input-field col s10">
@@ -36,6 +37,7 @@
                     </div>
                 </div>
             </div>
+            <!-- </form> -->
         </div>
     </div>
     <div class="jumbotron">
@@ -43,22 +45,32 @@
             <div class="col s7" id="mainArtist">
                 <div class="card-panel row">
                     <div class="col s6" id="mainArtist">
-                        <div class="hoverable row" id="mainArtistRow">
-                            Artist Pic
+                        <div id="mainArtistRow">
+                            <div class="" id="mainArtistRow">
+                                Artist Pic
+                            </div>
                         </div>
                     </div>
                     <div class="col s6" id="artistSongs">
-                        <!-- Tracks added dynamically -->
+                        <a href="#!" class="collection-item">
+                            <i class="material-icons">play_circle_filled</i>Song one</a>
+                        <a href="#!" class="collection-item">
+                            <i class="material-icons">play_circle_filled</i>Song two</a>
+                        <a href="#!" class="collection-item">
+                            <i class="material-icons">play_circle_filled</i>Song three</a>
+                        <a href="#!" class="collection-item">
+                            <i class="material-icons">play_circle_filled</i>Song four</a>
+                        <a href="#!" class="collection-item">
+                            <i class="material-icons">play_circle_filled</i>Song five</a>
                     </div>
                     <div class="row">
-                        <div class="col s6" id="bioArea">
+                        <div class="col s12" id="bioArea">
                             <div class="card-panel row">Bio
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
             <div class="row">
                 <div class="col s5">
                     <ul class="collection with-header">
@@ -77,60 +89,58 @@
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="row">
-                    <div class="col s4">
-                        <div class="card-panel hoverable similarArtist" id="similarArtist1"> Artist Pic 2
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="card-panel hoverable similarArtist" id="similarArtist2"> Artist Pic 3
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="card-panel hoverable similarArtist" id="similarArtist3"> Artist Pic 4
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <footer class="page-footer yellow lighten-2">
             <div class="container">
                 <div class="row">
-                    <div class="col s2 sizeBox">
-                        <img class="footerImg" src="assets/css/images/sos.png">
-                    </div>
-                    <div class="col s2 sizeBox">
-                        <img class="footerImg" src="assets/css/images/euphoria.jpeg">
-                    </div>
-                    <div class="col s2 sizeBox">
-                        <img class="footerImgAcl" src="assets/css/images/acl.png">
-                    </div>
-                    <div class="col s2 sizeBox">
-                        <img class="footerImg" src="assets/css/images/oldsettlers.png">
-                    </div>
-                    <div class="col s2 sizeBox">
-                        <img class="footerImg" src="assets/css/images/sxsw.png">
-                    </div>
-                    <div class="col s2 sizeBox">
-                        <img class="footerImg" src="assets/css/images/levitation.jpeg">
+                    <div class="row">
+                        <div class="col s4">
+                            <div class="card-panel hoverable similarArtist" id="similarArtist1"> Artist Pic 2
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="card-panel hoverable similarArtist" id="similarArtist2"> Artist Pic 3
+                            </div>
+                        </div>
+                        <div class="col s4">
+                            <div class="card-panel hoverable similarArtist" id="similarArtist3"> Artist Pic 4
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="footer-copyright">
-                <div class="container grey-text darken-2">
-                    © 2016 &nbsp; blast.track
+            <footer class="page-footer yellow lighten-2">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s2 sizeBox">
+                            <img class="footerImg" src="assets/css/images/sos.png">
+                        </div>
+                        <div class="col s2 sizeBox">
+                            <img class="footerImg" src="assets/css/images/euphoria.jpeg">
+                        </div>
+                        <div class="col s2 sizeBox">
+                            <img class="footerImgAcl" src="assets/css/images/acl.png">
+                        </div>
+                        <div class="col s2 sizeBox">
+                            <img class="footerImg" src="assets/css/images/oldsettlers.png">
+                        </div>
+                        <div class="col s2 sizeBox">
+                            <img class="footerImg" src="assets/css/images/sxsw.png">
+                        </div>
+                        <div class="col s2 sizeBox">
+                            <img class="footerImg" src="assets/css/images/levitation.jpeg">
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </footer>
-        <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-        <!-- Compiled and minified JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
-        <!-- Firebase Reference -->
-        <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
-        <script type="text/javascript" src="assets/javascript/app.js"></script>
+                <div class="footer-copyright">
+                    <div class="container grey-text darken-2">
+                        © 2016 &nbsp; blast.track
+                    </div>
+                </div>
+            </footer>
+            <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+            <!-- Firebase Reference -->
+            <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+            <script type="text/javascript" src="assets/javascript/app.js"></script>
 </body>
 
 </html>
