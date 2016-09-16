@@ -16,11 +16,57 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 // WORKING EXAMPLE LASTFM API CALL
 // http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Linkin+Park&api_key=26a76686375358b55dd7488f7bf1256d&format=json
 
+
+// Initialize Firebase
+var config = {
+    apiKey: "AIzaSyAbRh1nH7CnVIFKc-uz2QOH1KVuMGTMKic",
+    authDomain: "music-rec-app.firebaseapp.com",
+    databaseURL: "https://music-rec-app.firebaseio.com",
+    storageBucket: "music-rec-app.appspot.com",
+    messagingSenderId: "886344174594"
+}
+firebase.initializeApp(config);
+
+
+
 var queryString = 'http://ws.audioscrobbler.com/2.0'
 
 var info = undefined
 var albums = undefined
 var tracks = undefined
+
+function fireBaseSignIn() {
+    var provider = new firebase.auth.GoogleAuthProvider()
+
+    firebase.auth().signInWithRedirect(provider)
+
+    firebase.auth().getRedirectResult().then(function(result) {
+        if (result.credential) {
+            // This gives you a Google Access Token. You can use it to access the Google API.
+            var token = result.credential.accessToken;
+            // ...
+        }
+        // The signed-in user info.
+        var user = result.user;
+    }).catch(function(error) {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        // ...
+    });
+}
+
+function fireBaseSignOut() {
+    firebase.auth().signOut().then(function() {
+        // Sign-out successful.
+    }, function(error) {
+        // An error happened.
+    })
+}
 
 
 function artistGetInfo(input) {
