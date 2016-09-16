@@ -45,5 +45,12 @@ h4 {
 img {
 	width: 100%;
 	height: auto;
+}
 
+#mainArtist {
+	font-size: 20px;
+}
+
+p {
+	font-size: 20px;
 }
