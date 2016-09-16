@@ -145,9 +145,9 @@ function displayArtistInfo(data) {
     }
     // console.log(artist)
     var html = $('<div class="col s12">' +
-        '<p>' + artist.name + '<p>' + 
+        '<p id="artistName">' + artist.name + '<p>' + 
         '<img class="image-responsive" src="' + artist.image + '">' +
-        '<p>' + artist.description + '</p>' +
+        '<p id="artistDesc">' + artist.description + '</p>' +
         '</div>')
     $('#mainArtistRow').append(html)
 }
