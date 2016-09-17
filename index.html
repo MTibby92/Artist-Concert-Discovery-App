@@ -16,9 +16,24 @@
 </head>
 
 <body>
+    <!-- Dropdown Structure -->
+    <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">one</a></li>
+        <li><a href="#!">two</a></li>
+        <li class="divider"></li>
+        <li><a href="#!">three</a></li>
+    </ul>
+    <!-- End Dropdown structure -->
     <nav>
         <div class="nav-wrapper yellow lighten-2">
             <a class="brand-logo grey-text darken-2" id="headerText">blast.track</a>
+            <!-- Sign-in & History buttons -->
+            <ul class="right hide-on-med-and-down">
+                <li><a class="waves-effect waves-light btn" id="sign-in">Sign-In</a></li>
+                <!-- Dropdown Trigger -->
+                <li><a class="dropdown-button" href="#!" data-activates="dropdown1" id="hisory">History<i class="material-icons right">arrow_drop_down</i></a></li>
+            </ul>
+            <!-- End Sign-in & history buttons -->
         </div>
     </nav>
     <div class="container-search">
@@ -44,27 +59,29 @@
         <div class="row">
             <div class="col s7" id="mainArtist">
                 <div class="card-panel row">
-                    <div class="col s6" id="mainArtist">
-                        <div id="mainArtistRow">
-                            <div class="" id="mainArtistRow">
-                                Artist Pic
+                    <div class="row">
+                        <div class="col s6" id="mainArtist">
+                            <div id="mainArtistRow">
+                                <div class="" id="mainArtistRow">
+                                    Artist Pic
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col s6" id="artistSongs">
-                        <a href="#!" class="collection-item">
-                            <i class="material-icons">play_circle_filled</i>Song one</a>
-                        <a href="#!" class="collection-item">
-                            <i class="material-icons">play_circle_filled</i>Song two</a>
-                        <a href="#!" class="collection-item">
-                            <i class="material-icons">play_circle_filled</i>Song three</a>
-                        <a href="#!" class="collection-item">
-                            <i class="material-icons">play_circle_filled</i>Song four</a>
-                        <a href="#!" class="collection-item">
-                            <i class="material-icons">play_circle_filled</i>Song five</a>
+                        <div class="col s6" id="artistSongs">
+                            <a href="#!" class="collection-item">
+                                <i class="material-icons">play_circle_filled</i>Song one</a>
+                            <a href="#!" class="collection-item">
+                                <i class="material-icons">play_circle_filled</i>Song two</a>
+                            <a href="#!" class="collection-item">
+                                <i class="material-icons">play_circle_filled</i>Song three</a>
+                            <a href="#!" class="collection-item">
+                                <i class="material-icons">play_circle_filled</i>Song four</a>
+                            <a href="#!" class="collection-item">
+                                <i class="material-icons">play_circle_filled</i>Song five</a>
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="col s12" id="bioArea">
+                        <div class="col s12 hoverable" id="bioArea">
                             <div class="card-panel row">Bio
                             </div>
                         </div>
@@ -110,23 +127,14 @@
             <footer class="page-footer yellow lighten-2">
                 <div class="container">
                     <div class="row">
-                        <div class="col s2 sizeBox">
-                            <img class="footerImg" src="assets/css/images/sos.png">
+                        <div class="col s5 sizeBox">
+                            <img class="footerImg" src="assets/css/images/lastfmgrey.png">
                         </div>
-                        <div class="col s2 sizeBox">
-                            <img class="footerImg" src="assets/css/images/euphoria.jpeg">
+                        <div class="col s3 sizeBox">
+                            <img class="footerImg" src="assets/css/images/github.png">
                         </div>
-                        <div class="col s2 sizeBox">
-                            <img class="footerImgAcl" src="assets/css/images/acl.png">
-                        </div>
-                        <div class="col s2 sizeBox">
-                            <img class="footerImg" src="assets/css/images/oldsettlers.png">
-                        </div>
-                        <div class="col s2 sizeBox">
-                            <img class="footerImg" src="assets/css/images/sxsw.png">
-                        </div>
-                        <div class="col s2 sizeBox">
-                            <img class="footerImg" src="assets/css/images/levitation.jpeg">
+                        <div class="col s4 sizeBox">
+                            <img class="footerImg" src="assets/css/images/seatgeekgrey.png">
                         </div>
                     </div>
                 </div>
@@ -141,6 +149,7 @@
             <!-- Firebase Reference -->
             <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
             <script type="text/javascript" src="assets/javascript/app.js"></script>
+            <script type="text/javascript" src="assets/javascript/firebase-v2.js"></script>
 </body>
 
 </html>
