@@ -16,6 +16,8 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 // WORKING EXAMPLE LASTFM API CALL
 // http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Linkin+Park&api_key=26a76686375358b55dd7488f7bf1256d&format=json
 
+
+
 var queryString = 'http://ws.audioscrobbler.com/2.0'
 
 var info = undefined
@@ -144,12 +146,13 @@ function displayArtistInfo(data) {
         image: data.artist.image[3]["#text"], // image size
     }
     // console.log(artist)
-    var html = $('<div class="col s12">' +
-        '<p id="artistName">' + artist.name + '<p>' + 
+    var html = $('<div class="col s12 hoverable">' +
+        '<h2 id="artistName">' + artist.name + '</h2>' + 
         '<img class="image-responsive" src="' + artist.image + '">' +
-        '<p id="artistDesc">' + artist.description + '</p>' +
+        // '<p id="artistDesc">' + artist.description + '</p>' +
         '</div>')
     $('#mainArtistRow').append(html)
+    $('#bioArea').html(artist.description)
 }
 
 // function displayTopAlbums(data) {
@@ -455,6 +458,6 @@ $( document ).ready(function() {
     })
 
     $('.collapsible').collapsible({
-      accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        accordion : true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
     })
 })
