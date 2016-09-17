@@ -77,6 +77,13 @@ function initApp() {
             var isAnonymous = user.isAnonymous;
             var uid = user.uid;
             var providerData = user.providerData;
+
+            // Add User to database
+            firebase.database().ref('history/' + uid).set({
+                name: displayName,
+                email: email
+            })
+
             // [START_EXCLUDE]
             // document.getElementById('sign-in-status').textContent = 'Signed in';
             console.log('Signed In')
