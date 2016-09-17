@@ -23,7 +23,7 @@ input {
 #headerText, h4 {
     font-family: advent-pro, sans-serif;
     font-size: 60px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 h4 {
@@ -53,4 +53,11 @@ img {
 
 p {
 	font-size: 20px;
+}
+
+.footer-copyright {
+	font-family: advent-pro, sans-serif;
+    font-size: 30px;
+    font-weight: 200;
+    text-align: center;
 }
