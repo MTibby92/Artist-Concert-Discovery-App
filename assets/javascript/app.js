@@ -18,14 +18,14 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 
 
 // Initialize Firebase
-var config = {
-    apiKey: "AIzaSyAbRh1nH7CnVIFKc-uz2QOH1KVuMGTMKic",
-    authDomain: "music-rec-app.firebaseapp.com",
-    databaseURL: "https://music-rec-app.firebaseio.com",
-    storageBucket: "music-rec-app.appspot.com",
-    messagingSenderId: "886344174594"
-}
-firebase.initializeApp(config);
+// var config = {
+//     apiKey: "AIzaSyAbRh1nH7CnVIFKc-uz2QOH1KVuMGTMKic",
+//     authDomain: "music-rec-app.firebaseapp.com",
+//     databaseURL: "https://music-rec-app.firebaseio.com",
+//     storageBucket: "music-rec-app.appspot.com",
+//     messagingSenderId: "886344174594"
+// }
+// firebase.initializeApp(config);
 
 
 
@@ -35,38 +35,38 @@ var info = undefined
 var albums = undefined
 var tracks = undefined
 
-function fireBaseSignIn() {
-    var provider = new firebase.auth.GoogleAuthProvider()
+// function fireBaseSignIn() {
+//     var provider = new firebase.auth.GoogleAuthProvider()
 
-    firebase.auth().signInWithRedirect(provider)
+//     firebase.auth().signInWithRedirect(provider)
 
-    firebase.auth().getRedirectResult().then(function(result) {
-        if (result.credential) {
-            // This gives you a Google Access Token. You can use it to access the Google API.
-            var token = result.credential.accessToken;
-            // ...
-        }
-        // The signed-in user info.
-        var user = result.user;
-    }).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // The email of the user's account used.
-        var email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        var credential = error.credential;
-        // ...
-    });
-}
+//     firebase.auth().getRedirectResult().then(function(result) {
+//         if (result.credential) {
+//             // This gives you a Google Access Token. You can use it to access the Google API.
+//             var token = result.credential.accessToken;
+//             // ...
+//         }
+//         // The signed-in user info.
+//         var user = result.user;
+//     }).catch(function(error) {
+//         // Handle Errors here.
+//         var errorCode = error.code;
+//         var errorMessage = error.message;
+//         // The email of the user's account used.
+//         var email = error.email;
+//         // The firebase.auth.AuthCredential type that was used.
+//         var credential = error.credential;
+//         // ...
+//     });
+// }
 
-function fireBaseSignOut() {
-    firebase.auth().signOut().then(function() {
-        // Sign-out successful.
-    }, function(error) {
-        // An error happened.
-    })
-}
+// function fireBaseSignOut() {
+//     firebase.auth().signOut().then(function() {
+//         // Sign-out successful.
+//     }, function(error) {
+//         // An error happened.
+//     })
+// }
 
 
 function artistGetInfo(input) {
