@@ -190,12 +190,13 @@ function displayArtistInfo(data) {
         image: data.artist.image[3]["#text"], // image size
     }
     // console.log(artist)
-    var html = $('<div class="col s12">' +
-        '<p id="artistName">' + artist.name + '<p>' + 
+    var html = $('<div class="col s12 hoverable">' +
+        '<h2 id="artistName">' + artist.name + '</h2>' + 
         '<img class="image-responsive" src="' + artist.image + '">' +
-        '<p id="artistDesc">' + artist.description + '</p>' +
+        // '<p id="artistDesc">' + artist.description + '</p>' +
         '</div>')
     $('#mainArtistRow').append(html)
+    $('#bioArea').html(artist.description)
 }
 
 // function displayTopAlbums(data) {
