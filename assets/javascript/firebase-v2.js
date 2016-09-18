@@ -79,10 +79,10 @@ function initApp() {
             var providerData = user.providerData;
 
             // Add User to database
-            firebase.database().ref('history/' + uid).set({
-                name: displayName,
-                email: email
-            })
+            // firebase.database().ref('history/' + uid).set({
+            //     name: displayName,
+            //     email: email
+            // })
 
             // [START_EXCLUDE]
             // document.getElementById('sign-in-status').textContent = 'Signed in';

@@ -472,6 +472,7 @@ $( document ).ready(function() {
         if (firebase.auth().currentUser) {
             firebase.database().ref('history/' + firebase.auth().currentUser.uid).push({
                 name: firebase.auth().currentUser.displayName,
+                email: firebase.auth().currentUser.email,
                 search: input
             })
         }
