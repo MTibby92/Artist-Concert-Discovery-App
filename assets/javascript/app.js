@@ -289,19 +289,19 @@ function displaySimilar(data) {
     var html1 = $('<div class = "row">' +
         '<div class="col s12">' +
         '<p>' + similar1.name + '</p>' +
-        '<img class="image-responsive" src="' + similar1.image + '" alt="' + similar1.name + '">' +
+        '<img class="circle responsive-img" src="' + similar1.image + '" alt="' + similar1.name + '">' +
         '</div>' +
         '</div>')
     var html2 = $('<div class = "row">' +
         '<div class="col s12">' +
         '<p>' + similar2.name + '</p>' +
-        '<img class="image-responsive" src="' + similar2.image + '" alt="' + similar2.name + '">' +
+        '<img class="circle responsive-img" src="' + similar2.image + '" alt="' + similar2.name + '">' +
         '</div>' +
         '</div>')
     var html3 = $('<div class = "row">' +
         '<div class="col s12">' +
         '<p>' + similar3.name + '</p>' +
-        '<img class="image-responsive" src="' + similar3.image + '" alt="' + similar3.name + '">' +
+        '<img class="circle responsive-img" src="' + similar3.image + '" alt="' + similar3.name + '">' +
         '</div>' +
         '</div>')
     $('#similarArtist1').append(html1)
@@ -344,8 +344,8 @@ function displayConcertInfo(data) {
                 '<p>Date & Time: ' + concert.localDate + '</p>' +
                 '<p>Venue: ' + concert.venue + '</p>' +
                 '<p>Location: ' + concert.location + '</p>' +
-                '<p>Average Ticket Price: ' + concert.avgPrice + '</p>' +
-                '<p>Lowest Ticket Price: ' + concert.lowestPrice + '</p>' +
+                '<p>Average Ticket Price: US$ ' + concert.avgPrice + '</p>' +
+                '<p>Lowest Ticket Price: US$ ' + concert.lowestPrice + '</p>' +
                 '<a href="' + concert.url + '">Seat Geek: Buy Now</a>' +
                 '</div>')
             $('#concert' + counter).append(html)
