@@ -15,6 +15,15 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 
 // WORKING EXAMPLE LASTFM API CALL
 // http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Linkin+Park&api_key=26a76686375358b55dd7488f7bf1256d&format=json
+// Initialize Firebase
+// var config = {
+//     apiKey: "AIzaSyAbRh1nH7CnVIFKc-uz2QOH1KVuMGTMKic",
+//     authDomain: "music-rec-app.firebaseapp.com",
+//     databaseURL: "https://music-rec-app.firebaseio.com",
+//     storageBucket: "music-rec-app.appspot.com",
+//     messagingSenderId: "886344174594"
+// };
+// firebase.initializeApp(config)
 
 
 
@@ -444,6 +453,12 @@ $( document ).ready(function() {
     $('#search').on('click', function(event) {
         reset()
         var input = $('#searchInput').val().trim()
+        if (firebase.auth().currentUser) {
+            firebase.database().ref('history/' + firebase.auth().currentUser.uid).push({
+                name: firebase.auth().currentUser.displayName,
+                search: input
+            })
+        }
     	artistGetInfo(input)
     	$('#searchInput').val('')
     })
@@ -454,6 +469,13 @@ $( document ).ready(function() {
         // var input = $(event.target).find('img')
         // console.log($(event.target).find('img').context.alt)
         var input = $(event.target).find('img').context.alt
+        if (firebase.auth().currentUser) {
+            firebase.database().ref('history/' + firebase.auth().currentUser.uid).push({
+                name: firebase.auth().currentUser.displayName,
+                email: firebase.auth().currentUser.email,
+                search: input
+            })
+        }
         artistGetInfo(input)
     })
 
