@@ -92,3 +92,11 @@ img {
     font-weight: 300;
     text-align: center;
 }
+
+.collection-item {
+	color: #999999;
+}
+
+.artistSongs {
+	font-size: 10px;
+}
