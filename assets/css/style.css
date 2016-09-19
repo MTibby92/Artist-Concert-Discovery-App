@@ -48,16 +48,47 @@ img {
 }
 
 #mainArtist {
-	font-size: 20px;
+	font-size: 14px;
 }
 
-p {
-	font-size: 20px;
+.jumbotron p {
+	font-size: 14px;
 }
 
 .footer-copyright {
 	font-family: advent-pro, sans-serif;
     font-size: 30px;
     font-weight: 200;
+    text-align: center;
+}
+
+.footerImgSg {
+	margin-left: 40px;
+}
+
+#similarArtistOne, #similarArtistTwo, #similarArtistThree {
+	height: 100vh;
+}
+
+#sign-in {
+	background-color: #999999;
+	color: white;
+}
+
+#hisory {
+	color: #999999;
+}
+
+.similarArtist {
+	font-family: advent-pro, sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+	text-align: center;
+}
+
+#artistName {
+	font-family: advent-pro, sans-serif;
+    font-size: 30px;
+    font-weight: 300;
     text-align: center;
 }
