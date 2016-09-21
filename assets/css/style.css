@@ -100,3 +100,17 @@ img {
 .artistSongs {
 	font-size: 10px;
 }
+
+a:link {
+	font-size: 15px;
+	font-weight: bold;
+	color: black;
+}
+
+a:hover {
+	color: #fff176;
+}
+
+.input-field input[type=text]:focus {
+     border-bottom: 1px solid #000;
+     box-shadow: 0 1px 0 0 #000;
