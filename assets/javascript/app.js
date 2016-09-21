@@ -335,8 +335,8 @@ function displayConcertInfo(data) {
                 localDate: data.events[i].datetime_local,
                 venue: data.events[i].venue.name,
                 location: data.events[i].venue.display_location,
-                avgPrice: data.events[i].stats.average_price,
-                lowestPrice: data.events[i].stats.lowest_price,
+                // avgPrice: data.events[i].stats.average_price,
+                // lowestPrice: data.events[i].stats.lowest_price,
                 url: data.events[i].url
             }
             var html = $('<div>' +
@@ -344,8 +344,8 @@ function displayConcertInfo(data) {
                 '<p>Date & Time: ' + concert.localDate + '</p>' +
                 '<p>Venue: ' + concert.venue + '</p>' +
                 '<p>Location: ' + concert.location + '</p>' +
-                '<p>Average Ticket Price: ' + concert.avgPrice + '</p>' +
-                '<p>Lowest Ticket Price: ' + concert.lowestPrice + '</p>' +
+                // '<p>Average Ticket Price: ' + concert.avgPrice + '</p>' +
+                // '<p>Lowest Ticket Price: ' + concert.lowestPrice + '</p>' +
                 '<a href="' + concert.url + '">Seat Geek: Buy Now</a>' +
                 '</div>')
             $('#concert' + counter).append(html)
@@ -363,8 +363,8 @@ function displayConcertInfo(data) {
             localDate: data.events["0"].datetime_local,
             venue: data.events["0"].venue.name,
             location: data.events["0"].venue.display_location,
-            avgPrice: data.events["0"].stats.average_price,
-            lowestPrice: data.events["0"].stats.lowest_price,
+            // avgPrice: data.events["0"].stats.average_price,
+            // lowestPrice: data.events["0"].stats.lowest_price,
             url: data.events["0"].url
         }
         var concert2 = {
@@ -372,8 +372,8 @@ function displayConcertInfo(data) {
             localDate: data.events["1"].datetime_local,
             venue: data.events["1"].venue.name,
             location: data.events["1"].venue.display_location,
-            avgPrice: data.events["1"].stats.average_price,
-            lowestPrice: data.events["1"].stats.lowest_price,
+            // avgPrice: data.events["1"].stats.average_price,
+            // lowestPrice: data.events["1"].stats.lowest_price,
             url: data.events["1"].url
         }
         var concert3 = {
@@ -381,8 +381,8 @@ function displayConcertInfo(data) {
             localDate: data.events["2"].datetime_local,
             venue: data.events["2"].venue.name,
             location: data.events["2"].venue.display_location,
-            avgPrice: data.events["2"].stats.average_price,
-            lowestPrice: data.events["2"].stats.lowest_price,
+            // avgPrice: data.events["2"].stats.average_price,
+            // lowestPrice: data.events["2"].stats.lowest_price,
             url: data.events["2"].url
         }
         var concert4 = {
@@ -390,8 +390,8 @@ function displayConcertInfo(data) {
             localDate: data.events["3"].datetime_local,
             venue: data.events["3"].venue.name,
             location: data.events["3"].venue.display_location,
-            avgPrice: data.events["3"].stats.average_price,
-            lowestPrice: data.events["3"].stats.lowest_price,
+            // avgPrice: data.events["3"].stats.average_price,
+            // lowestPrice: data.events["3"].stats.lowest_price,
             url: data.events["3"].url
         }
         var concert5 = {
@@ -399,8 +399,8 @@ function displayConcertInfo(data) {
             localDate: data.events["4"].datetime_local,
             venue: data.events["4"].venue.name,
             location: data.events["4"].venue.display_location,
-            avgPrice: data.events["4"].stats.average_price,
-            lowestPrice: data.events["4"].stats.lowest_price,
+            // avgPrice: data.events["4"].stats.average_price,
+            // lowestPrice: data.events["4"].stats.lowest_price,
             url: data.events["4"].url
         }
 
@@ -415,8 +415,8 @@ function displayConcertInfo(data) {
                 '<p>Date & Time: ' + list[i].localDate + '</p>' +
                 '<p>Venue: ' + list[i].venue + '</p>' +
                 '<p>Location: ' + list[i].location + '</p>' +
-                '<p>Average Ticket Price: ' + list[i].avgPrice + '</p>' +
-                '<p>Lowest Ticket Price: ' + list[i].lowestPrice + '</p>' +
+                // '<p>Average Ticket Price: ' + list[i].avgPrice + '</p>' +
+                // '<p>Lowest Ticket Price: ' + list[i].lowestPrice + '</p>' +
                 '<a href="' + list[i].url + '">Seat Geek: Buy Now</a>' +
                 '</div>')
             $('#concert' + counter).append(html)
@@ -453,9 +453,13 @@ $( document ).ready(function() {
     $('#search').on('click', function(event) {
         reset()
         var input = $('#searchInput').val().trim()
+        var date = new Date()
+        date = date.toString()
         if (firebase.auth().currentUser) {
             firebase.database().ref('history/' + firebase.auth().currentUser.uid).push({
                 name: firebase.auth().currentUser.displayName,
+                email: firebase.auth().currentUser.email,
+                date: date,
                 search: input
             })
         }
@@ -469,10 +473,13 @@ $( document ).ready(function() {
         // var input = $(event.target).find('img')
         // console.log($(event.target).find('img').context.alt)
         var input = $(event.target).find('img').context.alt
+        var date = new Date()
+        date = date.toString()
         if (firebase.auth().currentUser) {
             firebase.database().ref('history/' + firebase.auth().currentUser.uid).push({
                 name: firebase.auth().currentUser.displayName,
                 email: firebase.auth().currentUser.email,
+                date: date,
                 search: input
             })
         }
