@@ -44,9 +44,22 @@ function getHistory() {
             $('#dropdown1').append('<li><a href="#!">' + snapshot.val().search + '</a></li>')
             $('#dropdown1').append('<li class="divider"></li>')
             // count++
-            if ($('#dropdown1').length > 5) {
-                $('#dropdown1').first().remove()
+            // if ($('#dropdown1').length > 5) {
+            //     $('#dropdown1').first().remove()
+            // }
+            var ul = document.getElementById('dropdown1')
+            var i = 0
+            var total = ul.getElementsByTagName('li')
+            var count = total.length
+            count = count/2
+            if (count > 5) {
+                var target1 = total[0]
+                var target2 = total[1]
+                var parent = document.getElementById('dropdown1')
+                parent.removeChild(target1)
+                parent.removeChild(target2)
             }
+
         // }
     })
 }
