@@ -241,23 +241,23 @@ function displayTopTracks(data) {
     var html = $('<ul class="collapsible" data-collapsible="accordion">' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track1.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track1.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track2.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track2.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track2.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track3.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track3.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track3.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track4.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track4.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track5.link + '" class="collection-item">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track5.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
         '</li>' +
         '</ul>')
     $('#artistSongs').append(html)
@@ -346,7 +346,7 @@ function displayConcertInfo(data) {
                 '<p>Location: ' + concert.location + '</p>' +
                 // '<p>Average Ticket Price: ' + concert.avgPrice + '</p>' +
                 // '<p>Lowest Ticket Price: ' + concert.lowestPrice + '</p>' +
-                '<a href="' + concert.url + '">Seat Geek: Buy Now</a>' +
+                '<a href="' + concert.url + '" target="_blank">Seat Geek: Buy Now</a>' +
                 '</div>')
             $('#concert' + counter).append(html)
             counter++
@@ -417,7 +417,7 @@ function displayConcertInfo(data) {
                 '<p>Location: ' + list[i].location + '</p>' +
                 // '<p>Average Ticket Price: ' + list[i].avgPrice + '</p>' +
                 // '<p>Lowest Ticket Price: ' + list[i].lowestPrice + '</p>' +
-                '<a href="' + list[i].url + '">Seat Geek: Buy Now</a>' +
+                '<a href="' + list[i].url + '" target="_blank">Seat Geek: Buy Now</a>' +
                 '</div>')
             $('#concert' + counter).append(html)
             counter++
