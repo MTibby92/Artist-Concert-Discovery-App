@@ -146,6 +146,7 @@ function initApp() {
             $('#sign-in').html('Sign-Out')
             // document.getElementById('account-details').textContent = JSON.stringify(user, null, '  ');
             // [END_EXCLUDE]
+            $('#history').show()
             getHistory()
         } else {
             // User is signed out.
@@ -154,6 +155,7 @@ function initApp() {
             console.log('Signed Out')
             document.getElementById('sign-in').textContent = 'Sign in with Google';
             $('#sign-in').html('Sign-In')
+            $('#history').hide()
             // document.getElementById('account-details').textContent = 'null';
             // document.getElementById('oauthtoken').textContent = 'null';
             // [END_EXCLUDE]

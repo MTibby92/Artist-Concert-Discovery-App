@@ -445,6 +445,7 @@ function reset() {
 $( document ).ready(function() {
     $('.jumbotron').hide()
     $('#similar').hide()
+    $('#history').hide()
 
     $('#searchInput').keypress(function (e) {
         var key = e.which;
