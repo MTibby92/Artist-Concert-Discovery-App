@@ -443,6 +443,9 @@ function reset() {
 
 
 $( document ).ready(function() {
+    $('.jumbotron').hide()
+    $('#similar').hide()
+
     $('#searchInput').keypress(function (e) {
         var key = e.which;
         if(key == 13) {
@@ -463,6 +466,8 @@ $( document ).ready(function() {
                 search: input
             })
         }
+        $('.jumbotron').show()
+        $('#similar').show()
     	artistGetInfo(input)
     	$('#searchInput').val('')
     })
@@ -483,6 +488,8 @@ $( document ).ready(function() {
                 search: input
             })
         }
+        // $('.jumbotron').show()
+        // $('#similar').show()
         artistGetInfo(input)
     })
 
