@@ -86,6 +86,12 @@ img {
 	text-align: center;
 }
 
+#similar {
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 10px;
+}
+
 #artistName {
 	font-family: advent-pro, sans-serif;
     font-size: 30px;
@@ -105,6 +111,11 @@ a:link {
 	font-size: 15px;
 	font-weight: bold;
 	color: black;
+}
+
+.dropdown-content li>a {
+	color: black;
+	font-size: 14px;
 }
 
 a:hover {
