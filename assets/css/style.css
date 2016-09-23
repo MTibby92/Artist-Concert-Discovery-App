@@ -51,6 +51,10 @@ img {
 	font-size: 14px;
 }
 
+#mainArtistRow {
+	text-align: center;
+}
+
 .jumbotron p {
 	font-size: 14px;
 }
@@ -116,6 +120,11 @@ a:link {
 .dropdown-content li>a {
 	color: black;
 	font-size: 14px;
+}
+
+img.image-responsive {
+	height: 200px;
+	width: 220px;
 }
 
 a:hover {
