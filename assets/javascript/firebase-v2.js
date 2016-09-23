@@ -14,8 +14,8 @@ function getHistory() {
     var myUserID = firebase.auth().currentUser.uid
     $('#dropdown1').empty()
     firebase.database().ref('history/' + myUserID).limitToLast(5).on('child_added', function(snapshot) {
-        console.log(snapshot.val())
-        console.log(snapshot.val().search)
+        // console.log(snapshot.val())
+        // console.log(snapshot.val().search)
         $('#dropdown1').append('<li><a href="#!">' + snapshot.val().search + '</a></li>')
         $('#dropdown1').append('<li class="divider"></li>')
         var ul = document.getElementById('dropdown1')

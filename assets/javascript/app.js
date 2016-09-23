@@ -110,7 +110,7 @@ function getConcert(input) {
     $.ajax({url: query, method: 'GET', data: data})
     .done(function(response) {
         var concerts = response
-        console.log(concerts)
+        // console.log(concerts)
         displayConcertInfo(concerts)
     })
     .fail(function(response, text, error) {
@@ -134,7 +134,7 @@ function displayArtistInfo(data) {
         image: data.artist.image[3]["#text"], // image size
     }
     // console.log(artist)
-    var html = $('<div class="col s12 hoverable">' +
+    var html = $('<div class="col s12">' +
         '<h2 id="artistName">' + artist.name + '</h2>' + 
         '<img class="image-responsive" src="' + artist.image + '">' +
         '</div>')
@@ -200,23 +200,23 @@ function displayTopTracks(data) {
     var html = $('<ul class="collapsible" data-collapsible="accordion">' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track1.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track1.link + '" class="collection-item" target="_blank">Link to LastFM</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track2.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track2.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track2.link + '" class="collection-item" target="_blank">Link to LastFM</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track3.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track3.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track3.link + '" class="collection-item" target="_blank">Link to LastFM</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track4.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track4.link + '" class="collection-item" target="_blank">Link to LastFM</a></div>' +
         '</li>' +
         '<li>' +
             '<div class="collapsible-header hoverable"><i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></div>' +
-            '<div class="collapsible-body"><a href="' + track5.link + '" class="collection-item" target="_blank">Link to LastFM; YouTube Video Coming Soon!</a></div>' +
+            '<div class="collapsible-body"><a href="' + track5.link + '" class="collection-item" target="_blank">Link to LastFM</a></div>' +
         '</li>' +
         '</ul>')
     $('#artistSongs').append(html)
@@ -267,6 +267,7 @@ function displaySimilar(data) {
 }
 
 function displayConcertInfo(data) {
+    // Condition: Artist has no concerts according to Seat Geek
     if (data.events.length == 0) {
         $('#concert1').append($('<div>' +
             '<p>This band is not currently touring, according to our API.</p>' +
@@ -283,6 +284,7 @@ function displayConcertInfo(data) {
         $('#concert5').append($('<div>' +
             '<p>This band is not currently touring, according to our API.</p>' +
             '</div>'))
+    // Condition: Artist has less than 5 but more than 0 concerts, according to Seat Geek
     }else if (data.events.length > 0 && data.events.length < 5){
         var num = data.events.length
         var counter = 1
@@ -310,6 +312,7 @@ function displayConcertInfo(data) {
                 '</div>')
             counter++
         }
+    // Condition: Artist has 5 concerts (or more), according to Seat Geek
     } else {
         var concert1 = {
             title: data.events["0"].title,
