@@ -415,6 +415,7 @@ $( document ).ready(function() {
     	$('#searchInput').val('')
     })
 
+    // Known issue: if the picture isn't clicked on, doesn't pass data in; must click image
     $('.similarArtist').on('click', function(event) {
         reset()
         var input = $(event.target).find('img').context.alt
