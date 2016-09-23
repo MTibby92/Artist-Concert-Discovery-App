@@ -9,58 +9,27 @@ var config = {
 firebase.initializeApp(config)
 
 
-// firebase.database().ref().on('child_added', function(snapshot) {
-//     if (firebase.auth().currentUser) {
-//         var uid = firebase.auth().currentUser.uid
-//         var path = 'snapshot.history.' + uid
-//         console.log(snapshot.val())
-//         console.log(snapshot.val().search)
-//         console.log(snapshot.val().gh2q8cf6xHdowbBpAR1vpHiKrOx2)
-//         // console.log(snapshot.history[uid].key.search)
-//         console.log(snapshot.history.uid.key.search)
-//         $('.dropdown1').append('<li><a href="#!">' + eval(path) + '</a></li>')
-//         $('.dropdown1').append('<li class="divider"></li>')
-//     }
-// })
-
-// firebase.database().ref('history/' + firebase.auth().currentUser.uid).on('child_added', function(snapshot) {
-//     if (firebase.auth().currentUser) {
-//         $('.dropdown1').append('<li><a href="#!">' + snapshot.search + '</a></li>')
-//         $('.dropdown1').append('<li class="divider"></li>')
-//     }
-// })
 function getHistory() {
     var arr = []
     var myUserID = firebase.auth().currentUser.uid
-    // var count = 1
     $('#dropdown1').empty()
     firebase.database().ref('history/' + myUserID).limitToLast(5).on('child_added', function(snapshot) {
-        // if(count < 6) {
-
-            console.log(snapshot.val())
-            console.log(snapshot.val().search)
-            // arr.push(snapshot.val().search)
-            // console.log(arr)
-            $('#dropdown1').append('<li><a href="#!">' + snapshot.val().search + '</a></li>')
-            $('#dropdown1').append('<li class="divider"></li>')
-            // count++
-            // if ($('#dropdown1').length > 5) {
-            //     $('#dropdown1').first().remove()
-            // }
-            var ul = document.getElementById('dropdown1')
-            var i = 0
-            var total = ul.getElementsByTagName('li')
-            var count = total.length
-            count = count/2
-            if (count > 5) {
-                var target1 = total[0]
-                var target2 = total[1]
-                var parent = document.getElementById('dropdown1')
-                parent.removeChild(target1)
-                parent.removeChild(target2)
-            }
-
-        // }
+        console.log(snapshot.val())
+        console.log(snapshot.val().search)
+        $('#dropdown1').append('<li><a href="#!">' + snapshot.val().search + '</a></li>')
+        $('#dropdown1').append('<li class="divider"></li>')
+        var ul = document.getElementById('dropdown1')
+        var i = 0
+        var total = ul.getElementsByTagName('li')
+        var count = total.length
+        count = count/2
+        if (count > 5) {
+            var target1 = total[0]
+            var target2 = total[1]
+            var parent = document.getElementById('dropdown1')
+            parent.removeChild(target1)
+            parent.removeChild(target2)
+        }
     })
 }
 
@@ -133,31 +102,20 @@ function initApp() {
             var uid = user.uid;
             var providerData = user.providerData;
 
-            // Add User to database
-            // firebase.database().ref('history/' + uid).set({
-            //     name: displayName,
-            //     email: email
-            // })
-
             // [START_EXCLUDE]
-            // document.getElementById('sign-in-status').textContent = 'Signed in';
             console.log('Signed In')
             document.getElementById('sign-in').textContent = 'Sign out';
             $('#sign-in').html('Sign-Out')
-            // document.getElementById('account-details').textContent = JSON.stringify(user, null, '  ');
             // [END_EXCLUDE]
             $('#history').show()
             getHistory()
         } else {
             // User is signed out.
             // [START_EXCLUDE]
-            // document.getElementById('sign-in-status').textContent = 'Signed out';
             console.log('Signed Out')
             document.getElementById('sign-in').textContent = 'Sign in with Google';
             $('#sign-in').html('Sign-In')
             $('#history').hide()
-            // document.getElementById('account-details').textContent = 'null';
-            // document.getElementById('oauthtoken').textContent = 'null';
             // [END_EXCLUDE]
         }
         // [START_EXCLUDE]
@@ -167,6 +125,7 @@ function initApp() {
     // [END authstatelistener]
     document.getElementById('sign-in').addEventListener('click', toggleSignIn, false);
 }
+
 // window.onload = function() {
 //     initApp();
 // }

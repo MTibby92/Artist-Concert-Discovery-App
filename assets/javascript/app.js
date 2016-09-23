@@ -4,28 +4,10 @@ var sharedSecret = 'd1727a270c67dc265f0b9d9b4910ffc9'
 // registered to MTibby92
 // app name is "Bootcamp Artist & Concert Recommendation App"
 
-// Song Kick API key
-// applied 9/8, can take up to 7 days to get a key
-
 // Got a Seat Geek Account (use instead of Song Kick) see: http://platform.seatgeek.com/
 // Client ID:  NTY3ODAyM3wxNDczNzE5MjM2
 // Secret: DG24aEL_jP5x1lXmJeRPbDVb03Ocuy4IFWjrC-xY
 // query string: https://api.seatgeek.com/2
-
-
-// WORKING EXAMPLE LASTFM API CALL
-// http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=Linkin+Park&api_key=26a76686375358b55dd7488f7bf1256d&format=json
-// Initialize Firebase
-// var config = {
-//     apiKey: "AIzaSyAbRh1nH7CnVIFKc-uz2QOH1KVuMGTMKic",
-//     authDomain: "music-rec-app.firebaseapp.com",
-//     databaseURL: "https://music-rec-app.firebaseio.com",
-//     storageBucket: "music-rec-app.appspot.com",
-//     messagingSenderId: "886344174594"
-// };
-// firebase.initializeApp(config)
-
-
 
 var queryString = 'http://ws.audioscrobbler.com/2.0'
 
@@ -35,7 +17,6 @@ var tracks = undefined
 
 
 function artistGetInfo(input) {
-    // var input = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getinfo",
         artist: input,
@@ -72,7 +53,6 @@ function artistGetInfo(input) {
 // }
 
 function artistGetTopTracks(input) {
-    // var searchInput = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getTopTracks",
         artist: input,
@@ -91,7 +71,6 @@ function artistGetTopTracks(input) {
 }
 
 function artistGetSimilar(input) {
-    // var searchInput = $('#searchInput').val().trim()
     var searchData = {
         method: "artist.getSimilar",
         artist: input,
@@ -158,7 +137,6 @@ function displayArtistInfo(data) {
     var html = $('<div class="col s12 hoverable">' +
         '<h2 id="artistName">' + artist.name + '</h2>' + 
         '<img class="image-responsive" src="' + artist.image + '">' +
-        // '<p id="artistDesc">' + artist.description + '</p>' +
         '</div>')
     $('#mainArtistRow').append(html)
     $('#bioArea').html(artist.description)
@@ -218,25 +196,6 @@ function displayTopTracks(data) {
         title: data.toptracks.track["4"].name,
         link: data.toptracks.track["4"].url
     }
-    // console.log(track1)
-    // console.log(track2)
-    // console.log(track3)
-    // console.log(track4)
-    // console.log(track5)
-
-    // var html = $('<div class="collection">' + 
-    //         '<a href="' + track1.link + '" class="collection-item">' +
-    //             '<i class="material-icons">play_circle_filled</i><span>' + track1.title + '</span></a>' +
-    //         '<a href="' + track2.link + '" class="collection-item">' +
-    //             '<i class="material-icons">play_circle_filled</i><span>' + track2.title + '</span></a>' +
-    //         '<a href="' + track3.link + '" class="collection-item">' +
-    //             '<i class="material-icons">play_circle_filled</i><span>' + track3.title + '</span></a>' +
-    //         '<a href="' + track4.link + '" class="collection-item">' +
-    //             '<i class="material-icons">play_circle_filled</i><span>' + track4.title + '</span></a>' +
-    //         '<a href="' + track5.link + '" class="collection-item">' +
-    //             '<i class="material-icons">play_circle_filled</i><span>' + track5.title + '</span></a>' +
-    //     '</div>')
-    // $('#artistSongs').append(html)
 
     var html = $('<ul class="collapsible" data-collapsible="accordion">' +
         '<li>' +
@@ -283,9 +242,7 @@ function displaySimilar(data) {
         name: data.similarartists.artist["2"].name,
         image: data.similarartists.artist["2"].image[4]["#text"],
     }
-    // console.log(similar1)
-    // console.log(similar2)
-    // console.log(similar3)
+
     var html1 = $('<div class = "row">' +
         '<div class="col s12">' +
         '<p>' + similar1.name + '</p>' +
@@ -335,8 +292,6 @@ function displayConcertInfo(data) {
                 localDate: data.events[i].datetime_local,
                 venue: data.events[i].venue.name,
                 location: data.events[i].venue.display_location,
-                // avgPrice: data.events[i].stats.average_price,
-                // lowestPrice: data.events[i].stats.lowest_price,
                 url: data.events[i].url
             }
             var html = $('<div>' +
@@ -344,8 +299,6 @@ function displayConcertInfo(data) {
                 '<p>Date & Time: ' + concert.localDate + '</p>' +
                 '<p>Venue: ' + concert.venue + '</p>' +
                 '<p>Location: ' + concert.location + '</p>' +
-                // '<p>Average Ticket Price: ' + concert.avgPrice + '</p>' +
-                // '<p>Lowest Ticket Price: ' + concert.lowestPrice + '</p>' +
                 '<a href="' + concert.url + '" target="_blank">Seat Geek: Buy Now</a>' +
                 '</div>')
             $('#concert' + counter).append(html)
@@ -363,8 +316,6 @@ function displayConcertInfo(data) {
             localDate: data.events["0"].datetime_local,
             venue: data.events["0"].venue.name,
             location: data.events["0"].venue.display_location,
-            // avgPrice: data.events["0"].stats.average_price,
-            // lowestPrice: data.events["0"].stats.lowest_price,
             url: data.events["0"].url
         }
         var concert2 = {
@@ -372,8 +323,6 @@ function displayConcertInfo(data) {
             localDate: data.events["1"].datetime_local,
             venue: data.events["1"].venue.name,
             location: data.events["1"].venue.display_location,
-            // avgPrice: data.events["1"].stats.average_price,
-            // lowestPrice: data.events["1"].stats.lowest_price,
             url: data.events["1"].url
         }
         var concert3 = {
@@ -381,8 +330,6 @@ function displayConcertInfo(data) {
             localDate: data.events["2"].datetime_local,
             venue: data.events["2"].venue.name,
             location: data.events["2"].venue.display_location,
-            // avgPrice: data.events["2"].stats.average_price,
-            // lowestPrice: data.events["2"].stats.lowest_price,
             url: data.events["2"].url
         }
         var concert4 = {
@@ -390,8 +337,6 @@ function displayConcertInfo(data) {
             localDate: data.events["3"].datetime_local,
             venue: data.events["3"].venue.name,
             location: data.events["3"].venue.display_location,
-            // avgPrice: data.events["3"].stats.average_price,
-            // lowestPrice: data.events["3"].stats.lowest_price,
             url: data.events["3"].url
         }
         var concert5 = {
@@ -399,14 +344,10 @@ function displayConcertInfo(data) {
             localDate: data.events["4"].datetime_local,
             venue: data.events["4"].venue.name,
             location: data.events["4"].venue.display_location,
-            // avgPrice: data.events["4"].stats.average_price,
-            // lowestPrice: data.events["4"].stats.lowest_price,
             url: data.events["4"].url
         }
 
         var list = [concert1, concert2, concert3, concert4, concert5]
-        // console.log(list[0])
-        // console.log(list[0].title)
 
         var counter = 1
         for (var i in list) {
@@ -415,8 +356,6 @@ function displayConcertInfo(data) {
                 '<p>Date & Time: ' + list[i].localDate + '</p>' +
                 '<p>Venue: ' + list[i].venue + '</p>' +
                 '<p>Location: ' + list[i].location + '</p>' +
-                // '<p>Average Ticket Price: ' + list[i].avgPrice + '</p>' +
-                // '<p>Lowest Ticket Price: ' + list[i].lowestPrice + '</p>' +
                 '<a href="' + list[i].url + '" target="_blank">Seat Geek: Buy Now</a>' +
                 '</div>')
             $('#concert' + counter).append(html)
@@ -475,9 +414,6 @@ $( document ).ready(function() {
 
     $('.similarArtist').on('click', function(event) {
         reset()
-        // console.log($(event.target).find('img'))
-        // var input = $(event.target).find('img')
-        // console.log($(event.target).find('img').context.alt)
         var input = $(event.target).find('img').context.alt
         var date = new Date()
         date = date.toString()
@@ -489,8 +425,6 @@ $( document ).ready(function() {
                 search: input
             })
         }
-        // $('.jumbotron').show()
-        // $('#similar').show()
         artistGetInfo(input)
     })
 
