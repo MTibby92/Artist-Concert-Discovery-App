@@ -131,5 +131,6 @@ function initApp() {
 // }
 
 $( document ).ready(function() {
-    $('#sign-in').on('click', initApp)
+    //$('#sign-in').on('click', initApp)
+    initApp()
 })
